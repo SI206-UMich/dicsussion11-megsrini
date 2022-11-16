@@ -24,7 +24,6 @@ def create_species_table(cur, conn):
     "Llama",
     "Hare"
     ]
-
     cur.execute("DROP TABLE IF EXISTS Species")
     cur.execute("CREATE TABLE Species (id INTEGER PRIMARY KEY, title TEXT)")
     for i in range(len(species)):
@@ -95,7 +94,6 @@ def non_aggressive_pets(aggressiveness, cur, conn):
     return result
 
 def main():
-    # SETUP DATABASE AND TABLE
     cur, conn = setUpDatabase('animal_hospital.db')
     create_species_table(cur, conn)
 
