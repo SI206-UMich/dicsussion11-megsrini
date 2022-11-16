@@ -2,18 +2,14 @@ import unittest
 import sqlite3
 import json
 import os
-# starter code
 
-# Create Database
 def setUpDatabase(db_name):
     path = os.path.dirname(os.path.abspath(__file__))
     conn = sqlite3.connect(path+'/'+db_name)
     cur = conn.cursor()
     return cur, conn
 
-# Creates list of species ID's and numbers
 def create_species_table(cur, conn):
-
     species = ["Rabbit",
     "Dog",
     "Cat",
