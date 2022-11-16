@@ -11,7 +11,6 @@ def setUpDatabase(db_name):
     cur = conn.cursor()
     return cur, conn
 
-
 # Creates list of species ID's and numbers
 def create_species_table(cur, conn):
 
@@ -42,14 +41,11 @@ def create_patients_table(cur, conn):
     cur.execute("DROP TABLE IF EXISTS Patients")
     cur.execute("CREATE TABLE Patients (pet_id INTEGER, name STRING, species_id NUMBER, age INTEGER, cuteness INTEGER, aggressiveness NUMBER)")
     
-
-
 # ADD FLUFFLE TO THE TABLE
 def add_fluffle(cur, conn):
     cur.execute("INSERT INTO Patients (pet_id,name,species_id,age,cuteness,aggressiveness) VALUES (?,?,?,?,?,?)",(0,"Fluffle",0,3,90,100))
     conn.commit()
     
-
 # TASK 2
 # CODE TO ADD JSON TO THE TABLE
 # ASSUME TABLE ALREADY EXISTS
@@ -94,9 +90,6 @@ def add_pets_from_json(filename, cur, conn):
         cur.execute("INSERT INTO Patients (pet_id,name,species_id,age,cuteness,aggressiveness) VALUES (?,?,?,?,?,?)",(i+1,json_data[i]["name"],json_data[i]["species"],json_data[i]["age"],json_data[i]["cuteness"],json_data[i]["aggressiveness"]))
     conn.commit()
 
-
-
-
 # TASK 3
 # CODE TO OUTPUT NON-AGGRESSIVE PETS
 def non_aggressive_pets(aggressiveness, cur, conn):
@@ -104,11 +97,6 @@ def non_aggressive_pets(aggressiveness, cur, conn):
     conn.commit()
     result = cur.fetchall()
     return result
-
-
-
-
-
 
 def main():
     # SETUP DATABASE AND TABLE
@@ -120,7 +108,6 @@ def main():
     add_pets_from_json('pets.json', cur, conn)
     ls = (non_aggressive_pets(10, cur, conn))
     print(ls)
-    
     
 if __name__ == "__main__":
     main()
